@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Resume.Presentation.Models.Entities.Education;
 using Resume.Presentation.Models.ResumeDbContext;
+using Resume.Application;
+
 namespace Resume.Presentation.Controllers;
 
 public class EducationController : Controller
@@ -9,6 +11,7 @@ public class EducationController : Controller
 
     public EducationController() { }
 
+    private readonly IEducationservies;
 
     #region Get List of Education
 
