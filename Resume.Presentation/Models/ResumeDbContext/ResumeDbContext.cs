@@ -8,11 +8,11 @@ public class ResumeDbContext : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source=ERFANPC;Initial Catalog=TestDbContext;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True");
+        optionsBuilder.UseSqlServer("Data Source=ERFANPC;Initial Catalog=MyResume;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True");
         base.OnConfiguring(optionsBuilder);
     }
 
-    public DbSet<Experience> experiences { get; set; }
-    public DbSet<Education> educations { get; set; }
+    public DbSet<Experience> Experiences { get; set; }
+    public DbSet<Education> Educations { get; set; }
     public DbSet<MySkills> mySkills { get; set; }
 }
