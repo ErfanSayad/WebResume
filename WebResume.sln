@@ -18,9 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{880038B1-79E6-4EB3-A42A-8E4D6FD54274}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTOs", "DTOs", "{6E5A4890-0842-4761-AE11-8B6FAF164393}"
-	ProjectSection(SolutionItems) = preProject
-		Resume.Presentation\Models\UserDTO.cs = Resume.Presentation\Models\UserDTO.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
