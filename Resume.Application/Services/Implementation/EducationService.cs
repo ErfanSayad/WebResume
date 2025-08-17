@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interface;
-using Resume.Presentation.Models.Entities.Education;
-using Resume.Presentation.Models.ResumeDbContext;
+using Resume.Domain.Entities;
+using Resume.Infrastructure.ResumeDbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
