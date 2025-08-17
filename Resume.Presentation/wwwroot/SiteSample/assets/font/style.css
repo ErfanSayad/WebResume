@@ -25,9 +25,5 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-whatsapp:before {
-  content: "\1f310";
-}
-.icon-telegram:before {
-  content: "\1f300";
-}
+
+

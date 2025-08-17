@@ -28,4 +28,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Resume.Application\Resume.Application.csproj" />
+    <ProjectReference Include="..\Resume.Domain\Resume.Domain.csproj" />
+    <ProjectReference Include="..\Resume.infrastructure\Resume.infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
