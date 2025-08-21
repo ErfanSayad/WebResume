@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Resume.Domain.Entities;
+using Resume.Domain.Entities.ContactUs;
 namespace Resume.Infrastructure.ResumeDbContext;
 
 public class ResumeDbContext : DbContext
@@ -13,4 +14,6 @@ public class ResumeDbContext : DbContext
     public DbSet<Experience> Experiences { get; set; }
     public DbSet<Education> Educations { get; set; }
     public DbSet<MySkills> mySkills { get; set; }
+    public DbSet<ContactUs> ContactUs { get; set; }
+
 }
