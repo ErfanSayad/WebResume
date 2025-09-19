@@ -200,6 +200,40 @@
                                 </ul>
                             </li>
 
+                            <li class="nav-item has-treeview @Html.IsMenuOpen("Experience")">
+                                <a href="#" class="nav-link @Html.IsActive("Experience")">
+                                    <i class="nav-icon fa fa-th"></i>
+                                    <p>
+                                        مدیریت تجربه ها
+                                        <i class="fa fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a class="nav-link @Html.IsActive("Experience", "ListOfExperience")"
+                                           asp-area="AdminPanel"
+                                           asp-controller="Experience"
+                                           asp-action="ListOfExperience">
+
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>لیست تجربه ها</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link @Html.IsActive("Experience", "CreateExperience")"
+                                           asp-area="AdminPanel"
+                                           asp-controller="Experience"
+                                           asp-action="CreateExperience">
+
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>افزودن تجربه ها</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
 
                             <li class="btn btn-danger" style="height:35px; margin-top:1px;">
                                 <a href="/Logout" class="red-link">

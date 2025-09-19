@@ -1,9 +1,26 @@
 ﻿@model Resume.Domain.Entities.ContactUs.ContactUs
 
+<style>
+	.content {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.title__separate::before, .title__separate::after {
+		right: 0;
+	}
+
+	.title {
+		font-family: Vazir;
+	}
+
+</style>
+
+
 <!-- Content -->
 <div class="content" data-simplebar data-simplebar-direction='rtl'>
 	<div class="section mt-0 mb-5">
-		<h1 class="title title--h1 title__separate">Contact</h1>
+		<h1 class="title title--h1 title__separate">ارتباط با ما</h1>
 	</div>
 
 	<form id="" class="contact-form" method="post" asp-action="ContactUs" asp-controller="ContactUs">

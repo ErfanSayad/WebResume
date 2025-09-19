@@ -1,0 +1,58 @@
+﻿@model Resume.Domain.Entities.Experience;
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "افزودن تجربه";
+}
+
+<div class="card card-primary" style="margin:0 10px;">
+    <div class="card-header">
+        <h3 class="card-title">افزودن تجربه</h3>
+    </div>
+
+    <form role="form"
+          asp-action="CreateExperience"
+          asp-area="AdminPanel"
+          asp-controller="Experience"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div class="card-body">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="ExperienceTitle">عنوان دوره</label>
+                <input asp-for="ExperienceTitle" class="form-control" placeholder="عنوان دوره مورد نظر را وارد کنید" />
+                <span asp-validation-for="ExperienceTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ExperienceDuration">بازه زمانی</label>
+                <input asp-for="ExperienceDuration" class="form-control" placeholder="بازه زمانی را وارد کنید" />
+                <span asp-validation-for="ExperienceDuration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">توضیحات</label>
+                <input asp-for="Description" class="form-control" placeholder="توضیحات را وارد کنید" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="companyName">نام مرکز آموزشی</label>
+                <input asp-for="companyName" class="form-control" placeholder="نام مرکز را وارد کنید" />
+                <span asp-validation-for="companyName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="companySite">سایت آموزشی</label>
+                <input asp-for="companySite" class="form-control" placeholder="ادرس سایت را وارد کنید" />
+                <span asp-validation-for="companySite" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">ثبت</button>
+        </div>
+    </form>
+</div>
