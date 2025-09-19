@@ -1,0 +1,40 @@
+﻿@model Resume.Domain.Entities.MySkills;
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="card card-primary" style="margin:0 10px;">
+    <div class="card-header">
+        <h3 class="card-title">افزودن مهارت</h3>
+    </div>
+
+    <form role="form"
+          asp-action="CreateMySkill"
+          asp-area="AdminPanel"
+          asp-controller="MySkills"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div class="card-body">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="SkillTitle">عنوان مهارت</label>
+                <input asp-for="SkillTitle" class="form-control" placeholder="مهارت مورد نظر را وارد کنید" />
+                <span asp-validation-for="SkillTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Percentage">درصد پیشرفت</label>
+                <input asp-for="Percentage" class="form-control" placeholder="درصد تسلط را وارد کنید" />
+                <span asp-validation-for="Percentage" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">ثبت</button>
+        </div>
+    </form>
+</div>

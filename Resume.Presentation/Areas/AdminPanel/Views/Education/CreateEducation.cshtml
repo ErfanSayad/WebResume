@@ -1,0 +1,46 @@
+﻿@model Resume.Domain.Entities.Education;
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "افزودن تحصیلات";
+}
+
+<div class="card card-primary" style="margin:0 10px;">
+    <div class="card-header">
+        <h3 class="card-title">افزودن تحصیلات</h3>
+    </div>
+
+    <form role="form"
+          asp-action="CreateEducation"
+          asp-area="AdminPanel"
+          asp-controller="Education"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div class="card-body">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="EducationTitle">عنوان تحصیلات</label>
+                <input asp-for="EducationTitle" class="form-control" placeholder="تحصیلات مورد نظر را وارد کنید" />
+                <span asp-validation-for="EducationTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EducationDuration">بازه زمانی</label>
+                <input asp-for="EducationDuration" class="form-control" placeholder="بازه زمانی را وارد کنید" />
+                <span asp-validation-for="EducationDuration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">توضیحات</label>
+                <input asp-for="Description" class="form-control" placeholder="توضیحات را وارد کنید" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">ثبت</button>
+        </div>
+    </form>
+</div>

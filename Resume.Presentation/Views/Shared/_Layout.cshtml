@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Resume.Presentation.Extensions
+
+<!DOCTYPE html>
 <html lang="en">
-
-
-<!--  from netgon.net/artstyles/v-card2/full/resume.html by /3.x , Fri, 10 Sep 2021 12:26:38 GMT -->
 <head>
 	<meta charset="utf-8" />
 	<title>ErfanSayad - Resume</title>
@@ -66,7 +65,7 @@
 		</div>
 	</div>
 
-	<main class="main">
+	<main class="main" style="font-family: Vazir;">
 		<!-- Menu -->
 		<div class="circle-menu">
 			<div class="hamburger">
@@ -79,15 +78,15 @@
 
 		<div class="nav-wrap">
 			<ul class="nav">
-				<li class="nav__item"><a href="about.html">About</a></li>
-				<li class="nav__item"><a class="active" asp-action="index" asp-controller="Home">Resume</a></li>
-				<li class="nav__item"><a href="portfolio.html">Portfolio</a></li>
-				<li class="nav__item"><a href="blog.html">Blog</a></li>
-				<li class="nav__item"><a asp-action="index" asp-controller="ContactUs">Contact</a></li>
+				<li class="nav__item"><a asp-action="index" asp-controller="About" class="@Html.IsActive("About", "index")">درباره من</a></li>
+				<li class="nav__item"><a asp-action="index" asp-controller="Home" class="@Html.IsActive("Home", "index")">رزومه</a></li>
+				<li class="nav__item"><a asp-action="index" asp-controller="Portfolio" class="@Html.IsActive("Portfolio", "index")">نمونه کارها</a></li>
+				<li class="nav__item"><a asp-action="index" asp-controller="Blog" class="@Html.IsActive("Blog", "index")">وبلاگ</a></li>
+				<li class="nav__item"><a asp-action="ContactUs" asp-controller="ContactUs" class="@Html.IsActive("ContactUs","index")">ارتباط با ما</a></li>
 			</ul>
 		</div>
 
-		<div class="wrapper sticky-parent">
+		<div class="wrapper sticky-parent" style="padding-bottom:2rem;">
 			<!-- Sidebar -->
 			<aside class="sidebar">
 				<div class="sticky-column">
