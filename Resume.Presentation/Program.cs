@@ -27,6 +27,7 @@ namespace Resume.Presentation
             builder.Services.AddScoped<IExperienceRepository, ExperienceRepository>();
             builder.Services.AddScoped<IMySkillsRepository, MySkillsRepository>();
             builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
+            builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
             #endregion
 
             #region Services
@@ -37,6 +38,7 @@ namespace Resume.Presentation
             builder.Services.AddScoped<IExperienceService, ExperienceService>();
             builder.Services.AddScoped<IMySkillService, MySkillService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IReservationService, ReservationService>();
 
             #endregion
 
