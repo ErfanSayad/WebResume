@@ -4,6 +4,9 @@ namespace Resume.Domain.RepositoryInterface;
 
 public interface IExperienceRepository
 {
-    //GetListOfExperience
     List<Experience> GetListOfExperience();
+    public Experience? GetExperienceByID(int id);
+    public void Add(Experience experience);
+    public void Delete(Experience experience);
+    public void Update(Experience experience);
 }

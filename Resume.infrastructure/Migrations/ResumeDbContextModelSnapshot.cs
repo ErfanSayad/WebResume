@@ -99,7 +99,6 @@ namespace Resume.Presentation.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("companyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("companySite")
@@ -112,11 +111,11 @@ namespace Resume.Presentation.Migrations
 
             modelBuilder.Entity("Resume.Domain.Entities.MySkills", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Percentage")
                         .HasColumnType("int");
@@ -125,9 +124,142 @@ namespace Resume.Presentation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("mySkills");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Entities.Reservation.PersonSelectedReservation", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ReservationDateTimeId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReservationDateTimeId");
+
+                    b.ToTable("personSelectedReservations");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Entities.Reservation.ReservationDate", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("reservationDates");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Entities.Reservation.ReservationDateTime", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EndTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsReserved")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("ReservationDateId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<string>("StartTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReservationDateId");
+
+                    b.ToTable("reservationDateTimes");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Entities.Reservation.PersonSelectedReservation", b =>
+                {
+                    b.HasOne("Resume.Domain.Entities.Reservation.ReservationDateTime", "ReservationDateTime")
+                        .WithMany("peopleSelectedReservations")
+                        .HasForeignKey("ReservationDateTimeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReservationDateTime");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Entities.Reservation.ReservationDateTime", b =>
+                {
+                    b.HasOne("Resume.Domain.Entities.Reservation.ReservationDate", "ReservationDate")
+                        .WithMany("ReservationDateTimes")
+                        .HasForeignKey("ReservationDateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReservationDate");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Entities.Reservation.ReservationDate", b =>
+                {
+                    b.Navigation("ReservationDateTimes");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Entities.Reservation.ReservationDateTime", b =>
+                {
+                    b.Navigation("peopleSelectedReservations");
                 });
 #pragma warning restore 612, 618
         }

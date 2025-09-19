@@ -2,21 +2,33 @@
 
 @{
     ViewData["Title"] = "Home Page";
-
-    // var EDU = ViewBag.Education as List<Resume.Domain.Entities.Education>;
-    // var EXP = ViewBag.Experience as List<Resume.Domain.Entities.Experience>;
-    // var SKL = ViewBag.mySkills as List<Resume.Domain.Entities.MySkills>;
 }
 
-<!-- Content -->
+<style>
+    .content {
+        direction: rtl;
+        text-align: right;
+    }
+
+    .title__separate::before, .title__separate::after {
+        right: 0;
+    }
+
+    .title {
+        font-family: Vazir;
+    }
+
+</style>
+
+
 <div class="content" style="font-family: 'Vazir', sans-serif">
     <div class="section mt-0">
-        <h1 class="title title--h1 title__separate">Resume</h1>
+        <h1 class="title title--h1 title__separate">رزومه</h1>
     </div>
 
     <!-- Education -->
     <div class="section">
-        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-education.svg" alt="" /> Education</h2>
+        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-education.svg" alt="" /> تحصیلات</h2>
         <div class="timeline">
             @foreach (var education in Model.Educations)
             {
@@ -40,7 +52,7 @@
 
     <!-- Experience -->
     <div class="section">
-        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-experience.svg" alt=""/> Experience</h2>
+        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-experience.svg" alt=""/> تجربه ها</h2>
         <div class="timeline" >
             @foreach (var experience in Model.Experiences)
             {
@@ -61,7 +73,7 @@
 
     <!-- Skills -->
     <div class="section">
-        <h2 class="title title--h2">My Skills</h2>
+        <h2 class="title title--h2">مهارت‌های من</h2>
         <div class="box-gray">
             @foreach (var skills in Model.mySkills)
             {

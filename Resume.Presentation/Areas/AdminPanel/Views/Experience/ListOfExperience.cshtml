@@ -1,0 +1,48 @@
+﻿@model List<Resume.Domain.Entities.Experience>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "لیست تجربه ها";
+}
+
+<div class="card" style="margin:0 20px;">
+
+    <div class="card-body p-0">
+
+        <table class="table table-hover align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>عنوان دوره</th>
+                    <th>بازه زمانی</th>
+                    <th>توضیحات</th>
+                    <th>مرکز آموزشی</th>
+                    <th>سایت آموزشی</th>
+                    <th style="width: 300px">امکانات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var experience in Model)
+                {
+                    <tr>
+                        <td>@experience.Id</td>
+                        <td>@experience.ExperienceTitle</td>
+                        <td>@experience.ExperienceDuration</td>
+                        <td>@experience.Description</td>
+                        <td>@experience.companyName</td>
+                        <td>@experience.companySite</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("EditeExperience", "Experience", new { ExperienceID = experience.Id })" class="btn btn-sm btn-primary me-2">
+                                <i class="fa fa-edit"></i> ویرایش
+                            </a>
+                            <a href="@Url.Action("DeleteExperience", "Experience", new { ExperienceID = experience.Id })" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i> حذف
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+</div>

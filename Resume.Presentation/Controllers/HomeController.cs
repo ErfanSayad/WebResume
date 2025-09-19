@@ -13,20 +13,25 @@ namespace Resume.Presentation.Controllers
 {
     public class HomeController : Controller
     {
-        #region Ctor
 
         private readonly IDashbordService _dashbordService;
         public HomeController(IDashbordService dashbordService)
         {
             _dashbordService = dashbordService;
         }
-        #endregion
+
         public async Task<IActionResult> Index()
         {
             var model = await _dashbordService.FillDashbordModel();
 
             return View(model);
         }
+
+        public IActionResult IndexPartial()
+        {
+            return PartialView("_IndexPartial");
+        }
+
 
     }
 }

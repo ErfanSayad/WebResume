@@ -1,0 +1,77 @@
+﻿@model Resume.Application.DTOs.SiteSide.Home_index.HomeIndexModel;
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    // var EDU = ViewBag.Education as List<Resume.Domain.Entities.Education>;
+    // var EXP = ViewBag.Experience as List<Resume.Domain.Entities.Experience>;
+    // var SKL = ViewBag.mySkills as List<Resume.Domain.Entities.MySkills>;
+}
+
+<!-- Content -->
+<div class="content" style="font-family: 'Vazir', sans-serif">
+    <div class="section mt-0">
+        <h1 class="title title--h1 title__separate">Resume</h1>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-education.svg" alt="" /> Education</h2>
+        <div class="timeline">
+            @foreach (var education in Model.Educations)
+            {
+                <!-- Item -->
+                <article class="timeline__item">
+                    <h5 class="title title--h3 timeline__title">
+                        @education.EducationTitle
+                    </h5>
+                    <span class="timeline__period">
+                        @education.EducationDuration
+                    </span>
+                    <p class="timeline__description">
+                        @education.Description
+                    </p>
+                </article>
+            }
+
+
+        </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-experience.svg" alt="" /> Experience</h2>
+        <div class="timeline">
+            @foreach (var experience in Model.Experiences)
+            {
+                <article class="timeline__item">
+                    <h5 class="title title--h3 timeline__title" style="font-family: Vazir !important;">
+                        @experience.ExperienceTitle
+                    </h5>
+                    <span class="timeline__period">
+                        @experience.ExperienceDuration
+                    </span>
+                    <p class="timeline__description">
+                        @experience.Description
+                    </p>
+                </article>
+            }
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <h2 class="title title--h2">My Skills</h2>
+        <div class="box-gray">
+            @foreach (var skills in Model.mySkills)
+            {
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="@skills.Percentage" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-text"><span>@skills.SkillTitle</span><span>@skills.Percentage%</span></div>
+                    </div>
+                    <div class="progress-text"><span>@skills.SkillTitle</span></div>
+                </div>
+            }
+        </div>
+    </div>
+</div><!-- Content End -->

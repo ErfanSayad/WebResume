@@ -2528,11 +2528,11 @@ button:focus {
   }
 }
 .timeline__item {
-  border-left-color: #F0F0F6;
-  border-left-width: 1px;
-  border-left-style: solid;
+  border-right-color: #F0F0F6;
+  border-right-width: 1px;
+  border-right-style: solid;
   padding-bottom: 1.1875rem;
-  padding-left: 1.375rem;
+  padding-right: 1.375rem;
   position: relative;
 }
 .timeline__item::before {
@@ -2542,7 +2542,7 @@ button:focus {
   border-radius: 50%;
   position: absolute;
   top: 0;
-  left: -0.3125rem;
+  right: -0.3120rem;
   height: 0.625rem;
   width: 0.625rem;
 }
@@ -2560,7 +2560,7 @@ button:focus {
   .timeline__item::before {
     box-shadow: 0 0 0 0.125rem rgba(48, 76, 253, 0.25);
     height: 0.5rem;
-    left: -0.25rem;
+    right: -0.25rem;
     width: 0.5rem;
   }
 }

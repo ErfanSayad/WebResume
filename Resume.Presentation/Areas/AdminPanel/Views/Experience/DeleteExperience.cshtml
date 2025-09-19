@@ -1,0 +1,45 @@
+﻿@model Resume.Domain.Entities.Experience;
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "حذف تجربه";
+}
+
+<div class="card" style="margin:20px;">
+    <div class="card-header bg-danger">
+        <h3 class="card-title">حذف تجربه</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="DeleteExperience" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="ExperienceTitle" class="form-label">عنوان دوره</label>
+                <input asp-for="ExperienceTitle" type="text" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ExperienceDuration" class="form-label">بازه زمانی</label>
+                <input asp-for="ExperienceDuration" type="text" class="form-control" min="0" max="100" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">توضیحات</label>
+                <input asp-for="Description" type="text" class="form-control" min="0" max="100" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="companyName" class="form-label">مرکز آموزشی</label>
+                <input asp-for="companyName" type="text" class="form-control" min="0" max="100" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="companySite" class="form-label">سایت آموزشی</label>
+                <input asp-for="companySite" type="text" class="form-control" min="0" max="100" />
+            </div>
+
+            <button type="submit" class="btn btn-danger">حذف</button>
+            <a href="@Url.Action("ListOfExperience")" class="btn btn-secondary">لغو</a>
+        </form>
+    </div>
+</div>
