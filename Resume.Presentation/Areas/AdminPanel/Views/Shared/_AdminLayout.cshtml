@@ -1,24 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@using Resume.Presentation.Areas.AdminPanel.Views.Helpers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>پنل مدیریت | صفحه خالی</title>
-    <!-- Tell the browser to be responsive to screen width -->
+    <title>پنل مدیریت</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
     <link rel="stylesheet" href="/Admin_Panel/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <!-- bootstrap rtl -->
     <link rel="stylesheet" href="/Admin_Panel/dist/css/bootstrap-rtl.min.css">
-    <!-- template rtl version -->
     <link rel="stylesheet" href="/Admin_Panel/dist/css/custom-style.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -137,34 +131,83 @@
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
+                                <a class="nav-link" href="/AdminPanel">
                                     <i class="nav-icon fa fa-dashboard"></i>
-                                    <p>
-                                        داشبورد
-                                    </p>
+                                    <p>داشبورد</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="../widgets.html" class="nav-link">
+                            <li class="nav-item has-treeview @Html.IsMenuOpen("Education")">
+                                <a href="#" class="nav-link @Html.IsActive("Education")">
                                     <i class="nav-icon fa fa-th"></i>
                                     <p>
                                         مدیریت تحصیلات
+                                        <i class="fa fa-angle-left right"></i>
                                     </p>
                                 </a>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   asp-area="AdminPanel"
-                                   asp-controller="Education"
-                                   asp-action="CreateAnEducation">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>افزودن سابقه</p>
-                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a class="nav-link @Html.IsActive("Education", "ListOfEducations")"
+                                           asp-area="AdminPanel"
+                                           asp-controller="Education"
+                                           asp-action="ListOfEducations">
+
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>لیست تحصیلات</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link @Html.IsActive("Education", "CreateEducation")"
+                                           asp-area="AdminPanel"
+                                           asp-controller="Education"
+                                           asp-action="CreateEducation">
+
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>افزودن تحصیلات</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
+
+                            <li class="nav-item has-treeview @Html.IsMenuOpen("MySkills")">
+                                <a href="#" class="nav-link @Html.IsActive("MySkills")">
+                                    <i class="nav-icon fa fa-th"></i>
+                                    <p>
+                                        مدیریت مهارت ها
+                                        <i class="fa fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a class="nav-link @Html.IsActive("MySkills", "ListOfMySkills")"
+                                           asp-area="AdminPanel"
+                                           asp-controller="MySkills"
+                                           asp-action="ListOfMySkills">
+
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>لیست مهارت ها</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link @Html.IsActive("MySkills", "CreateMySkill")"
+                                           asp-area="AdminPanel"
+                                           asp-controller="MySkills"
+                                           asp-action="CreateMySkill">
+
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>افزودن مهارت ها</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
                             <li class="btn btn-danger" style="height:35px; margin-top:1px;">
                                 <a href="/Logout" class="red-link">
                                     <p style="color:white;">خروج  </p>
                                 </a>
                             </li>
+
+
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -178,28 +221,22 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>فرم‌های عمومی</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-left">
-                                <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                                <li class="breadcrumb-item active">فرم‌های عمومی</li>
-                            </ol>
+                            <h1 class="m-0 text-dark">@(ViewData["Title"] as string ?? "داشبورد")</h1>
                         </div>
                     </div>
                 </div>
             </section>
 
-                @RenderBody()
+            @RenderBody()
 
-        <aside class="control-sidebar control-sidebar-dark">
-        </aside>
-    </div>
-    <script src="/Admin_Panel/plugins/jquery/jquery.min.js"></script>
-    <script src="/Admin_Panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/Admin_Panel/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="/Admin_Panel/plugins/fastclick/fastclick.js"></script>
-    <script src="/Admin_Panel/dist/js/adminlte.min.js"></script>
-    <script src="/Admin_Panel/dist/js/demo.js"></script>
+            <aside class="control-sidebar control-sidebar-dark">
+            </aside>
+        </div>
+        <script src="/Admin_Panel/plugins/jquery/jquery.min.js"></script>
+        <script src="/Admin_Panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/Admin_Panel/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="/Admin_Panel/plugins/fastclick/fastclick.js"></script>
+        <script src="/Admin_Panel/dist/js/adminlte.min.js"></script>
+        <script src="/Admin_Panel/dist/js/demo.js"></script>
 </body>
 </html>

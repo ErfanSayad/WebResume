@@ -1,53 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Resume.Application.DTOs.SiteSide.Home_index;
+using Resume.Application.Services.Implementation;
+using Resume.Application.Services.Interface;
 using Resume.Domain.Entities;
 using Resume.Domain.RepositoryInterface;
 using Resume.Infrastructure.ResumeDbContext;
-using Resume.Presentation.Models;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Resume.Presentation.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEducationRepository _educationRepository;
-        private readonly IExperienceRepository _experienceRepository;
-        private readonly IMySkills _mySkills;
+        #region Ctor
 
-        public HomeController(IEducationRepository educationRepository, IExperienceRepository experienceRepository, IMySkills mySkills)
+        private readonly IDashbordService _dashbordService;
+        public HomeController(IDashbordService dashbordService)
         {
-            _educationRepository = educationRepository;
-            _experienceRepository = experienceRepository;
-            _mySkills = mySkills;
+            _dashbordService = dashbordService;
         }
-
-
-
-        public IActionResult Index()
+        #endregion
+        public async Task<IActionResult> Index()
         {
-            var mySkills = _mySkills.GetListOfSkills();
+            var model = await _dashbordService.FillDashbordModel();
 
-            List<Education> educations = _educationRepository.GetListOfEducations();
-
-            List<Experience> experiences = _experienceRepository.GetListOfExperience();
-
-            #region ViewBag()  ,  ViewData[]  ,  TempData[]
-            //ViewBag.Education = educations;
-            //ViewBag.Experience = experiences;
-            //ViewBag.mySkills = mySkillsAsync;
-            #endregion
-
-            #region Fill Instance Model
-            HomeIndexModel models = new HomeIndexModel()
-            {
-                Experiences = experiences,
-                Educations = educations,
-                mySkills = mySkills
-            };
-
-            #endregion
-            return View(models);
+            return View(model);
         }
 
     }

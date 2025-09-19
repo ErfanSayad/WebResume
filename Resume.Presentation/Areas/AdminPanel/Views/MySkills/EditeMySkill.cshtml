@@ -1,0 +1,30 @@
+﻿@model Resume.Domain.Entities.MySkills
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "ویرایش مهارت";
+}
+
+<div class="card" style="margin:20px;">
+    <div class="card-header">
+        <h3 class="card-title">ویرایش مهارت</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="EditeMySkill" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="SkillTitle" class="form-label">نام مهارت</label>
+                <input asp-for="SkillTitle" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Percentage" class="form-label">درصد پیشرفت</label>
+                <input asp-for="Percentage" type="number" class="form-control" min="0" max="100" />
+            </div>
+
+            <button type="submit" class="btn btn-success">ذخیره تغییرات</button>
+            <a href="@Url.Action("ListOfMySkills")" class="btn btn-secondary">لغو</a>
+        </form>
+    </div>
+</div>

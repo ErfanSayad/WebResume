@@ -1,0 +1,35 @@
+﻿@model Resume.Domain.Entities.Education;
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "حذف تحصیلات";
+}
+
+<div class="card" style="margin:20px;">
+    <div class="card-header bg-danger">
+        <h3 class="card-title">حذف تحصیلات</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="DeleteEducation" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="EducationTitle" class="form-label">عنوان تحصیلات</label>
+                <input asp-for="EducationTitle" type="text" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EducationDuration" class="form-label">بازه زمانی</label>
+                <input asp-for="EducationDuration" type="text" class="form-control" min="0" max="100" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">توضیحات</label>
+                <input asp-for="Description" type="text" class="form-control" min="0" max="100" />
+            </div>
+
+            <button type="submit" class="btn btn-danger">حذف</button>
+            <a href="@Url.Action("ListOfEducations")" class="btn btn-secondary">لغو</a>
+        </form>
+    </div>
+</div>

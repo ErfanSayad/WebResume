@@ -9,7 +9,7 @@
 }
 
 <!-- Content -->
-<div class="content">
+<div class="content" style="font-family: 'Vazir', sans-serif">
     <div class="section mt-0">
         <h1 class="title title--h1 title__separate">Resume</h1>
     </div>
@@ -40,12 +40,12 @@
 
     <!-- Experience -->
     <div class="section">
-        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-experience.svg" alt="" /> Experience</h2>
-        <div class="timeline">
+        <h2 class="title title--h2"><img class="title-icon" src="/SiteSample/assets/icons/icon-experience.svg" alt=""/> Experience</h2>
+        <div class="timeline" >
             @foreach (var experience in Model.Experiences)
             {
                 <article class="timeline__item">
-                    <h5 class="title title--h3 timeline__title">
+                    <h5 class="title title--h3 timeline__title" style="font-family: Vazir !important;">
                         @experience.ExperienceTitle
                     </h5>
                     <span class="timeline__period">

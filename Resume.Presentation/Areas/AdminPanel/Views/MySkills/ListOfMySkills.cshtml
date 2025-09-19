@@ -1,0 +1,50 @@
+﻿@model List<Resume.Domain.Entities.MySkills>
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "لیست مهارت ها";
+}
+
+<div class="card" style="margin:0 20px;">
+    <div class="card-header">
+        <h3 class="card-title">جدول مهارت‌ها</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle text-center" style="background-color:white;">
+            <thead class="table-light">
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>مهارت</th>
+                    <th>پیشرفت</th>
+                    <th style="width: 40px">درصد</th>
+                    <th style="width: 300px">امکانات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var skills in Model)
+                {
+                    <tr>
+                        <td>@skills.Id</td>
+                        <td>@skills.SkillTitle</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-success" style="width: @skills.Percentage%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-success">@skills.Percentage%</span></td>
+                        <td class="text-center">
+                            <a href="@Url.Action("EditeMySkill", "MySkills", new { mySkillsID = skills.Id })" class="btn btn-sm btn-primary me-2">
+                                <i class="fa fa-edit"></i> ویرایش
+                            </a>
+                            <a href="@Url.Action("DeleteMySkill", "MySkills", new { mySkillsID = skills.Id })" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i> حذف
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

@@ -4,6 +4,9 @@ namespace Resume.Domain.RepositoryInterface;
 
 public interface IEducationRepository
 {
-    //GetListOfEducations
     List<Education> GetListOfEducations();
+    Education? GetEducationByID(int id);
+    void Add(Education education);
+    void Update(Education education);
+    void Delete(Education education);
 }

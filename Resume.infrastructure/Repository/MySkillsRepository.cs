@@ -5,19 +5,27 @@ using Resume.Infrastructure.ResumeDbContext;
 
 namespace Resume.infrastructure.Repository;
 
-public class MySkillsRepository : IMySkills
+public class MySkillsRepository : IMySkillsRepository
 {
-    #region Ctor
+
     private readonly ResumeDbContext _context;
     public MySkillsRepository(ResumeDbContext context)
     {
         _context = context;
     }
 
-    #endregion
     public List<MySkills> GetListOfSkills()
-    {
-        return _context.mySkills.ToList();
-    }
+        => _context.mySkills.ToList();
 
+    public MySkills? GetSkillByID(int id)
+        => _context.mySkills.Find(id);
+
+    public void Add(MySkills mySkill)
+        => _context.mySkills.Add(mySkill);
+
+    public void Delete(MySkills mySkill)
+        => _context.mySkills.Remove(mySkill);
+
+    public void Update(MySkills mySkill)
+        => _context.mySkills.Update(mySkill);
 }
